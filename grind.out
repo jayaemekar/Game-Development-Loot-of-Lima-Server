@@ -1,0 +1,92 @@
+==954917== Memcheck, a memory error detector
+==954917== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==954917== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==954917== Command: ./lima_server 3
+==954917== 
+There are 3 playing Loot of Lima.
+The two treasures are located at 4B and 3B
+
+The players have been allocated the following location tokens:
+  Player 1: 7F 8F 4F 5M 4M 1B 6M 
+  Player 2: 5F 8M 1F 3M 5B 6F 7M 
+  Player 3: 2B 6B 3F 7B 8B 1M 2F 
+
+All players know the treasure is not at the following locations: 2M 
+
+==954917== Conditional jump or move depends on uninitialised value(s)
+==954917==    at 0x11DC99: Gameplay::play_game() (Gameplay.cpp:94)
+==954917==    by 0x117F7F: main (loot_of_lima.cpp:24)
+==954917== 
+ITERATION=0
+========
+Round  1
+========
+Player 1 has rolled: SWB, WWW, WWF
+==954917== Conditional jump or move depends on uninitialised value(s)
+==954917==    at 0x4843596: rawmemchr (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==954917==    by 0x4AEDF35: _IO_str_init_static_internal (strops.c:41)
+==954917==    by 0x4ABD4C2: _IO_strfile_read (strfile.h:95)
+==954917==    by 0x4ABD4C2: __isoc99_sscanf (isoc99_sscanf.c:28)
+==954917==    by 0x118F14: LoLProtocol::receiveMessage(int, LoLProtocol::MessageFrame&) const (LoLProtocol.cpp:99)
+==954917==    by 0x11DF13: Gameplay::play_game() (Gameplay.cpp:120)
+==954917==    by 0x117F7F: main (loot_of_lima.cpp:24)
+==954917== 
+==954917== Use of uninitialised value of size 8
+==954917==    at 0x4ABDE6D: __vfscanf_internal (vfscanf-internal.c:3024)
+==954917==    by 0x4ABD501: __isoc99_sscanf (isoc99_sscanf.c:31)
+==954917==    by 0x118F14: LoLProtocol::receiveMessage(int, LoLProtocol::MessageFrame&) const (LoLProtocol.cpp:99)
+==954917==    by 0x11DF13: Gameplay::play_game() (Gameplay.cpp:120)
+==954917==    by 0x117F7F: main (loot_of_lima.cpp:24)
+==954917== 
+==954917== Conditional jump or move depends on uninitialised value(s)
+==954917==    at 0x4AECA9B: _IO_sputbackc (genops.c:639)
+==954917==    by 0x4AC0345: __vfscanf_internal (vfscanf-internal.c:3025)
+==954917==    by 0x4ABD501: __isoc99_sscanf (isoc99_sscanf.c:31)
+==954917==    by 0x118F14: LoLProtocol::receiveMessage(int, LoLProtocol::MessageFrame&) const (LoLProtocol.cpp:99)
+==954917==    by 0x11DF13: Gameplay::play_game() (Gameplay.cpp:120)
+==954917==    by 0x117F7F: main (loot_of_lima.cpp:24)
+==954917== 
+  Player 1 asks Player 2 how many locations they've searched between SW and WW in all terrain.
+  Player 2 responds: 1.
+
+ITERATION=1
+Player 2 has rolled: NEB, NNW, SEF
+  Player 2 asks Player 3 how many locations they've searched between NE and NN in all terrain.
+  Player 3 responds: 6.
+
+ITERATION=2
+==954917== Conditional jump or move depends on uninitialised value(s)
+==954917==    at 0x11DDC6: Gameplay::play_game() (Gameplay.cpp:106)
+==954917==    by 0x117F7F: main (loot_of_lima.cpp:24)
+==954917== 
+Player 3 has rolled: NEB, NNW, NNM
+  Player 3 asks Player 1 how many locations they've searched between NE and NN in all terrain.
+  Player 1 responds: 6.
+
+ITERATION=3
+========
+Round  2
+========
+Player 1 has rolled: NWM, WWM, NNM
+==954917== 
+==954917== Process terminating with default action of signal 2 (SIGINT)
+==954917==    at 0x4B68142: read (read.c:26)
+==954917==    by 0x118725: LoLProtocol::receiveMessage(int, LoLProtocol::MessageFrame&) const (LoLProtocol.cpp:41)
+==954917==    by 0x11DF13: Gameplay::play_game() (Gameplay.cpp:120)
+==954917==    by 0x117F7F: main (loot_of_lima.cpp:24)
+==954917== 
+==954917== HEAP SUMMARY:
+==954917==     in use at exit: 4,848 bytes in 58 blocks
+==954917==   total heap usage: 211 allocs, 153 frees, 89,466 bytes allocated
+==954917== 
+==954917== LEAK SUMMARY:
+==954917==    definitely lost: 0 bytes in 0 blocks
+==954917==    indirectly lost: 0 bytes in 0 blocks
+==954917==      possibly lost: 0 bytes in 0 blocks
+==954917==    still reachable: 4,848 bytes in 58 blocks
+==954917==         suppressed: 0 bytes in 0 blocks
+==954917== Rerun with --leak-check=full to see details of leaked memory
+==954917== 
+==954917== Use --track-origins=yes to see where uninitialised values come from
+==954917== For lists of detected and suppressed errors, rerun with: -s
+==954917== ERROR SUMMARY: 17 errors from 5 contexts (suppressed: 0 from 0)
